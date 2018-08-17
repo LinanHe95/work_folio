@@ -1,0 +1,225 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+const int sizeA = 12;
+
+void input(float[], float[], string[], int&);
+void inputArray(float[], string[], int, int);
+void tabular(float[],float[],string[],int);
+void graph(float[], float[], string[], int);
+void line();
+void asterisks(float);
+
+int main()
+{
+	float avg[sizeA];
+	float current[sizeA];
+	string months[sizeA] = {"January","February","March",
+							"April" ,"May" ,"June" ,"July" ,
+							"August" ,"September" ,"October" ,
+							"November" ,"December" };
+	int month;
+	char option, answer;
+
+	do {
+		month = 0;
+
+		input(avg, current, months, month);
+
+		cout << "Please choose between g)raphical and t)abular output: ";
+		cin >> option;
+
+		if (option == 't' || option == 'T')
+			tabular(avg, current, months, month);
+		else if (option == 'g' || option == 'G')
+			graph(avg, current, months, month);
+		else {
+			cout << "\nYou typed neither of the choices. "
+				<< "Defaulting to graphical output." << endl;
+			graph(avg, current, months, month);
+
+		}
+
+		cout << "Y/y continues, any thing else quits: ";
+		cin >> answer;
+
+	} while (answer =='y' || answer == 'Y');
+	
+	cout << endl << endl;
+	system("pause");
+	return 0;
+}
+
+void input(float avg[], float current[], string months[], int& month)
+{
+	cout << "Enter the average rainfall for each month" << endl << endl;
+	cout << "Average ranifall: ";
+
+	inputArray(avg, months, month, 1);
+
+	cout << "The actual rainfall:" << endl;
+	cout << "What is the current month ? Please give the number of the month Jan = 0, etc. ";
+	cin >> month;
+
+	cout << "The current month is: " << months[month] << endl;
+	cout << "Enter the actual rainfall for each month, as prompted," << endl;
+	cout << "First for the months in the previous year: ";
+
+	inputArray(current, months, month, 2);
+
+}
+
+void inputArray(float a[], string months[], int month, int opt)
+{
+	int count = 0;
+	do {
+
+		if (month > sizeA - 1)
+			month -= sizeA;
+
+		cin >> a[month];
+
+
+		cout << "For month " << left << setw(12) << months[month];
+
+		//display Avg only for first array
+		if (opt == 1)
+			cout << "Avg ";
+
+		cout<<"Rainfall: " << a[month] << endl;
+
+		count++;
+		month++;
+	} while (count < sizeA);//loop runs 12 times
+
+	cout << endl;
+}
+
+void tabular(float avg[], float current[],string months[],int month)
+{
+	cout << endl;
+
+	//force numbers to display with a period and 1 decimal
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(1);
+
+	cout << "You chose the tabular output." << endl << endl;
+
+	cout << "\t\t\tMonthly Rainfall" << endl
+		 << "\t\tFor the 12 Months Preceding May" << endl
+		 << "\tActual, Average, and Difference(= Actual - Average)" << endl;
+
+	line();
+
+	//displays the first 3 characters of each month
+	cout << "\t";
+	for (int i = 0; i < sizeA; i++)
+	{
+		cout << " " << months[i].substr(0, 3) << " ";
+		if (i != sizeA - 1)
+			cout << "|";
+	}
+	cout << endl;
+
+	line();
+
+	//displays the average rainfall values
+	cout << "average ";
+	for (int i = 0; i < sizeA; i++)
+	{
+		cout << " " << avg[i] << " ";
+		if (i != sizeA - 1)
+			cout << "|";
+	}
+	cout << endl;
+
+	//displays the current rainfall values
+	cout << "current ";
+	for (int i = 0; i < sizeA; i++)
+	{
+		cout << " " << current[i] << " ";
+		if (i != sizeA - 1)
+			cout << "|";
+	}
+	cout << endl;
+
+	//displays the difference (current - average) rainfall values
+	cout << "diffs   ";
+	for (int i = 0; i < sizeA; i++)
+	{
+		float diff = current[i] - avg[i];
+		if (diff >= 0)
+			cout << " ";
+
+		cout << diff << " ";
+		if (i != sizeA - 1)
+			cout << "|";
+	}
+	cout << endl;
+
+	//displays P if previours month
+	cout << "P)rev yr";
+	for (int i = 0; i < sizeA; i++)
+	{
+		if (i >= month)
+			cout << "  P  ";
+		else
+			cout << "     ";
+
+		if (i != sizeA - 1)
+			cout << "|";
+	}
+
+	cout << endl << endl;
+
+}
+
+void line()
+{
+	cout << "\t";
+	for (int i = 1; i <= 70; i++)
+	{
+		if (i % 6 == 0)
+			cout << "+";
+		else
+			cout << "-";
+	}
+
+	cout << endl;
+
+}
+
+
+void graph(float avg[], float current[], string months[], int month)
+{
+	cout << endl;
+	cout << "You chose the graphical output" << endl << endl;
+	cout << left << setw(10) << "Rainfall"
+		<< "  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5"
+		<< left << setw(10) << "";
+	cout << "|****|****|****|****|****|****|****|****|****|****|****|****|****|****" << endl;
+
+	for (int i = 0; i < sizeA; i++) {
+		cout << left << setw(10) << months[i];
+		if (i >= month)
+			cout << "     (Previous year)";
+		cout<< endl;
+		cout << left << setw(10) << "average";
+		asterisks(avg[i]);
+		cout << left << setw(10) << "actual";
+		asterisks(current[i]);
+		cout << endl;
+	}
+}
+
+void asterisks(float n)
+{
+	for (int i = 0; i <= n * 10; i++)
+		cout << "*";
+
+	cout << endl;
+}

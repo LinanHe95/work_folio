@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+class Location {
+	int longitude;
+	int lantitude;
+public:
+	void show();
+	int getLongitude();
+	int getLantitude();
+	void setLongitdue(int newLongitude);
+	void setLangitdue(int newLantitude);
+	Location();
+	Location(int, int);
+	Location operator+(Location operand2);
+	Location operator-(Location operand2);
+	bool operator==(Location operand2);
+	Location operator++();
+	Location operator--();
+	Location operator++(int);
+	Location operator--(int);
+};
+
+Location Location::operator-(Location operand2)
+{
+	Location tempLocation;
+	tempLocation.longitude = longitude - operand2.longitude;
+	tempLocation.lantitude = lantitude - operand2.lantitude;
+	return tempLocation;
+}
+Location Location::operator+(Location operand2)
+{
+	Location tempLocation;
+	tempLocation.longitude = longitude + operand2.longitude;
+	tempLocation.lantitude = lantitude + operand2.lantitude;
+	return tempLocation;
+}
+bool Location::operator==(Location operand2) { return(longitude == operand2.longitude && lantitude == operand2.lantitude) ? true : false;}
+Location Location::operator++() { ++lantitude; ++longitude; return Location(longitude, lantitude); }
+Location Location::operator--() { --lantitude; --longitude; return Location(longitude, lantitude); }
+Location Location::operator++(int a) { lantitude++; longitude++; return Location(longitude, lantitude); }
+Location Location::operator--(int a) {lantitude--; longitude--; return Location(longitude, lantitude); }
+void Location::show() { cout << "Longitude: " << longitude << endl << "Lantitude: " << lantitude << endl; }
+int Location::getLantitude() { return lantitude;}
+int Location::getLongitude() { return longitude; }
+void Location::setLangitdue(int newLangitude) { lantitude = newLangitude; }
+void Location::setLongitdue(int newLongitidue) { longitude = newLongitidue; }
+Location::Location() { longitude = 0; lantitude = 0; }
+Location::Location(int newLongitude, int newLantitude) { longitude = newLongitude; lantitude = newLantitude; }
+int main()
+{
+	Location Location1, Location2, Location3;
+	Location1.setLangitdue(58);
+	Location1.setLongitdue(68);
+	Location2.setLangitdue(44);
+	Location2.setLongitdue(22);
+	Location3 = Location1 + Location2;
+	Location3 = Location1 - Location2;
+	Location1++;
+	Location1.show();
+	++Location1;
+	Location1.show();
+	Location2--;
+	Location2.show();
+	--Location2;
+	Location2.show();
+	int equal= Location1 == Location2;
+	cout<<"LOCATION 1 IS EQUAL TO LOCATION2"<<equal;
+	cout << "Location 1:" << endl;
+	Location1.show();
+	cout << "Location 2:" << endl;
+	Location2.show();
+	cout << "Location 3:" << endl;
+	Location3.show();
+    return 0;
+}

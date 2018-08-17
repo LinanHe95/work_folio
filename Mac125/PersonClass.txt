@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class person {
+	string name;
+	int age;
+	static int totalPeople;
+public:
+	person();
+	person(string, int);
+	int getAge();
+	string getName();
+	void setAge(int);
+	void setName(string);
+	void print();
+	static int getTotal();
+};
+
+//static variable initialization
+int person::totalPeople = 0;
+
+person::person() {
+	setAge(1);
+	setName("not defined");
+	totalPeople++;
+}
+
+person::person(string newName, int newAge) {
+	setAge(newAge);
+	setName(newName);
+	totalPeople++;
+}
+int person::getAge() { return age; }
+string person::getName() { return name; }
+void person::setAge(int newAge) {
+	age = newAge;
+}
+void person::setName(string newName) {
+	name = newName;
+}
+void person::print() {
+	cout << "name: " << name << endl;
+	cout << "age: " << age << endl;
+}
+
+int person::getTotal()
+{
+	return totalPeople;
+}
+
+
+int main() {
+
+	vector<int> v;
+
+
+
+	return 0;
+}

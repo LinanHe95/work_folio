@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class CounterType
+{
+	int count;
+public:
+	void setCount(int);
+	int getCount();
+	void increment();
+	void decrement();
+	void print();
+};
+
+void CounterType::setCount(int n)
+{
+	if (n < 0)
+	{
+		cout << "can't enter negative" << endl;
+		system("pause");
+		exit(0);
+	}
+	count = n;
+}
+int CounterType::getCount() {
+	return count;
+}
+void CounterType::increment() {
+	count++;
+}
+void CounterType::decrement() {
+	if (count == 0)
+	{
+		cout << "can't decrease";
+		system("pause");
+		exit(0);
+	}
+	count--;
+}
+void CounterType::print() {
+	cout << "value of count is: " << count << endl;
+}
+
+int main()
+{
+	CounterType c;
+	int n;
+	cout << "enter a number: ";
+	cin >> n;
+	c.setCount(n);
+
+	for (int i = 0; i < 5; i++)
+		c.increment();
+
+	c.print();
+
+	c.decrement();
+	c.decrement();
+	c.print();
+	
+	system("pause");
+	return 0;
+}

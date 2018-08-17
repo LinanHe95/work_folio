@@ -1,0 +1,26 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+	string userInPut;
+	string n2 = "I LIKE";
+	string n3 = "I LOVE MAC125";
+	int volume = 0, constant = 0;
+	cin >> userInPut[30];
+	for (int i = 0; i <= userInPut.size; i++)
+		if (userInPut[i] == 'a' || userInPut[i] == 'e' || userInPut[i] == 'i' || userInPut[i] == 'o' || userInPut[i] == 'u')
+			volume++;
+		else
+			constant++;
+	userInPut.replace(0, 5, n2);
+	cout << userInPut;
+	cout << volume;
+	cout << constant;
+	userInPut.replace(0, 5, n3);
+	cout << userInPut;
+	return 0;
+}
+

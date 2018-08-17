@@ -1,0 +1,77 @@
+#include"stdafx.h"
+#include<iostream>
+using namespace std;
+/**
+name: linan he
+class: mac125
+*/
+class hotDogStand {
+	int StandID;
+	int numSold;
+public:
+	//accessor
+	int getStandID();
+	int getnumSold();
+	//mutt
+	void setStandID(int);
+	void setNumSold(int);
+	//construster
+	int justSold();
+	hotDogStand();
+	hotDogStand(int, int);
+};
+//accessory and mut method functions
+static int total;
+void hotDogStand::setStandID(int newStandID) { StandID = newStandID; }
+void hotDogStand::setNumSold(int newNumSold) { numSold = newNumSold; }
+int hotDogStand::getStandID() { return StandID; }
+int hotDogStand::getnumSold() { return numSold; }
+//const function
+hotDogStand::hotDogStand() { StandID = 0; numSold = 0; }
+hotDogStand::hotDogStand(int a, int b) { StandID = a; numSold = b; }
+
+//incre by 1 functions
+int hotDogStand::justSold() {
+	return numSold++;
+}
+int main()
+{
+	//getting info for each stand
+	int tempID,tempSold;
+	hotDogStand stand1, stand2, stand3;
+	cout << "enter info for stand1: "<<endl<<"ID: ";
+	cin >> tempID;
+	cout << "NumberSold: ";
+	cin>>tempSold;
+	stand1.setStandID(tempID);
+	stand1.setNumSold(tempSold);
+	cout << "enter info for stand2: " << endl << "ID: ";
+	cin >> tempID;
+	cout << "NumberSold: " ;
+	cin >> tempSold;
+	stand2.setStandID(tempID);
+	stand2.setNumSold(tempSold);
+	cout << "enter info for stand3: " << endl << "ID: ";
+	cin >> tempID;
+	cout << "NumberSold: ";
+	cin >> tempSold;
+	stand3.setStandID(tempID);
+	stand3.setNumSold(tempSold);
+	//send out the info for each stand
+	cout << "info for stnad 1: "<<endl;
+	cout << stand1.getStandID() << endl << stand1.getnumSold()<<endl;
+	cout << "info for stnad 2: " << endl;
+	cout << stand2.getStandID() << endl << stand2.getnumSold()<<endl;
+	cout << "info for stnad 3: " << endl;
+	cout << stand3.getStandID() << endl << stand3.getnumSold()<<endl;
+	//add all the number of hot dog together
+	stand1.justSold();
+	stand2.justSold();
+	stand3.justSold();
+	total = stand1.getnumSold() + stand2.getnumSold()+ stand3.getnumSold();
+	cout << "total sold: "<<total;
+
+	
+
+	return 0;
+}

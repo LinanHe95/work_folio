@@ -1,0 +1,197 @@
+====================================================
+3.7 3.6 5.1 3.8 4.2 4.2 4.4 4.8 4.0 3.3 3.3 3.5
+4.3 3.2 5.5 5.1 4.0 2.2 2.0 1.1 4.1 3.3 3.9 3.7
+====================================================
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Person
+{
+	string name;
+	float height;
+	float weight;
+};
+
+
+void input(Person&);
+void output(Person);
+Person input1(Person);
+
+int main()
+{
+	Person p1;
+
+	//input(p1);
+	p1 = input1(p1);
+
+	output(p1);
+
+	system("pause");
+}
+
+Person input1(Person p)
+{
+	cout << "enter your name: ";
+	getline(cin, p.name);
+
+	cout << "enter your height: ";
+	cin >> p.height;
+
+	cout << "enter your weight: ";
+	cin >> p.weight;
+
+	return p;
+
+}
+
+
+void output(Person p)
+{
+	cout << "Name: " << p.name << endl;
+	cout << "your height: " << p.height << endl;
+	cout << "your weight: " << p.weight << endl;
+}
+
+void input(Person& p)
+{
+	cout << "enter your name: ";
+	getline(cin, p.name);
+
+	cout << "enter your height: ";
+	cin >> p.height;
+
+	cout << "enter your weight: ";
+	cin >> p.weight;
+
+}
+===========================================================
+#include <iostream>
+using namespace std;
+struct Grade
+{
+	int q1;
+	int q2;
+	int mid;
+	int finalG;
+};
+
+const float Q = 0.25;
+const float M = 0.25;
+const float F = 0.5;
+
+void input(Grade&);
+int findGrade(Grade&);
+char findLetter(int);
+void output(Grade&, int, char);
+
+int main()
+{
+	Grade g;
+	int grade;
+	char lgrade;
+
+	input(g);
+	grade = findGrade(g);
+	lgrade = findLetter(grade);
+	output(g, grade, lgrade);
+
+	system("pause");
+	return 0;
+}
+
+void input(Grade& g)
+{
+	cout << "enter q1: ";
+	cin >> g.q1;
+
+	cout << "enter q2: ";
+	cin >> g.q2;
+
+	cout << "enter midterm: ";
+	cin >> g.mid;
+
+	cout << " enter final: ";
+	cin >> g.finalG;
+}
+
+
+int findGrade(Grade& g) {
+	int grade=0;
+
+	grade += ((g.q1*10 + g.q2*10)/2*Q);
+	grade += g.mid * M;
+	grade += g.finalG * F;
+
+	return grade;
+}
+char findLetter(int grade) {
+	char letter;
+
+	if (grade >= 90)
+		letter = 'A';
+	else if (grade >= 80)
+		letter = 'B';
+	else if (grade >= 70)
+		letter = 'C';
+	else if (grade >= 60)
+		letter = 'D';
+	else
+		letter = 'F';
+
+	return letter;
+}
+void output(Grade& g, int grade, char letter) {
+	cout << "Quiz1: " << g.q1 << endl;
+	cout << "Quiz2: " << g.q2 << endl;
+	cout << "Midterm: " << g.mid << endl;
+	cout << "Final: " << g.finalG << endl;
+	cout << "Final Grade: " << grade << endl;
+	cout << "Final Letter Grade: " << letter << endl;
+
+}
+
+
+
+============================================================
+
+#include <iostream>
+using namespace std;
+
+class Date
+{
+public:
+	int day;
+	int month;
+	int year;
+	void output();
+	void outputTest();
+};
+
+int main()
+{
+	Date bday;
+	bday.day = 27;
+	bday.month = 3;
+	bday.year = 1973;
+
+	bday.output();
+
+	bday.outputTest();
+
+	system("pause");
+	return 0;
+}
+
+void Date::outputTest()
+{
+	cout << "Daisy Caceres" << endl;
+}
+
+void Date::output()
+{
+	cout << "day: " << day << endl;
+	cout << "month: " << month << endl;
+	cout << "year: " << year << endl;
+	outputTest();
+}

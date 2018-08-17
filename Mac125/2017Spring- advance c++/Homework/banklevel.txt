@@ -1,0 +1,48 @@
+#include<iostream>
+#include<string>
+using namespace std;
+void platinumMember() {
+
+}
+void goldMember(month) {
+
+}
+void silverMember(month) {
+
+}
+
+int main()
+{
+	string name,level,late;
+	double balance;
+	double plat = 0.01;
+	double gold = 0.02;
+	double silver = 0.03;
+	double percentToPrinciple,paymentToPrinciple,  totalPayment;
+	percentToPrinciple = 100 * (paymentToPrinciple / totalPayment);
+
+	cout << "Credit card program by Linan He" << endl;
+	cout << "Pleaser enter a customer name: " << endl;
+	getline(cin, name);
+	cout << "Please enter the customer's member level:(Platium, Gold, or Silver)" << endl;
+	cin >> level;
+	if (level != "Platium" || level != "Gold" || level != "Silver")
+		cout << "error: there is no " << level << "member level in our system.";
+	cout << "Please enter the current balance amount: ";
+	cin >> balance;
+	cout << "Was the payment made late?: ";
+	cin >> late;
+	if (late != "Yes" || late != "No")
+		cout << "invaild answer";
+	cout << "====================================================================================" << endl <<
+		"/tStatement" << endl <<
+		"===================================================================================="<<endl;
+	if (level == "Platium")
+		platinumMember(name, late, balance);
+	else if (level == "Gold")
+		goldMember();
+	else if (level == "Silver")
+		silverMember();
+    return 0;
+}
+

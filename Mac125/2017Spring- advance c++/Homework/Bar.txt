@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+//Assignment: Bar.cpp
+//
+// Auther: Linan He
+// Date: Current Date
+// Class:Mac125
+// Completion time: Time
+//
+// Honor Code: I pledge that this program represents my own
+//             program code. I received no help from classmate in designing 
+//  
+int main() {
+	
+		int money,extra, coupon = 0, bar;
+		cout << "Enter the amount of amount as whole number for how many chocalte bar you wants to buy: "<<endl;
+		cin >> money;
+		cout << "You have spend " << money << " dallors to buy " << money << " chocalate bars" << endl;
+		bar = money;
+		money /= 7;
+		coupon = money;
+		extra=money + bar;
+		cout << "You have total of " << bar << " coupons, "<<endl<<
+			"with that many coupon, you can exchangle for " << money << " extra choclate bars,"<<endl<<
+			"now the total chocalte bar is "<<extra<<" with ";
+		money %= 7;
+		cout << money << " extra coupon left ";
+	 
+		if (coupon >= 7) {
+			coupon /= 7;
+			coupon %= 7;
+		}
+		else {
+			cout << "you can no longer exchange"<<coupon<<" coupon for extra choclate bar anymore";
+		}
+	
+	return 0;
+}
+
+

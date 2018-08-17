@@ -1,0 +1,306 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+	const int size = 5;
+	int myArray[size]; //declaration of array
+
+	//filling array with random #s from 1 to 20
+	srand(time(0));
+	for (int i = 0; i < size; i++)
+		myArray[i] = rand() % 20 + 1;
+
+	//display the content of the array
+	for (int i = 0; i < size; i++)
+		cout << myArray[i] << endl;
+
+	//find the largest # in the array
+	int max;
+	max = myArray[0];
+	for (int i = 1; i < size; i++)
+	{
+		if (myArray[i] > max)
+			max = myArray[i];
+	}
+
+	cout << "max: " << max << endl;
+
+	//find the addition of all the elements in the array
+	int sum;
+	sum = 0;
+	for (int i = 0; i < size; i++)
+		sum += myArray[i];
+
+	cout << "addition: " << sum << endl;
+
+	system("pause");
+	return 0;
+}
+
+===================================================================
+===================================================================
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int sizeArr = 5;
+
+//Prototypes
+void fillArray(int[]);
+void output(int[]);
+int getMax(int[]);
+int getSum(int[]);
+
+int main()
+{
+	int myArray[sizeArr]; //declaration of array
+	int max, sum;
+	char answer;
+
+	do {
+		//filling array with random #s from 1 to 20
+		fillArray(myArray);
+
+		//display the content of the array
+		output(myArray);
+
+		//find the largest # in the array
+		max = getMax(myArray);
+
+		//find the addition of all the elements in the array
+		sum = getSum(myArray);
+
+		cout << "max: " << max << endl;
+		cout << "addition: " << sum << endl;
+
+		cout << "do you want to repeat? (y/n) ";
+		cin >> answer;
+
+	} while (answer != 'n');
+
+	system("pause");
+	return 0;
+}
+
+void fillArray(int myArray[]) {
+	srand(time(0));
+
+	for (int i = 0; i < sizeArr; i++)
+		myArray[i] = rand() % 20 + 1;
+}
+
+void output(int myArray[]) {
+	for (int i = 0; i < sizeArr; i++)
+		cout << myArray[i] << endl;
+}
+
+int getMax(int myArray[])
+{
+	int max;
+	max = myArray[0];
+	for (int i = 1; i < sizeArr; i++)
+	{
+		if (myArray[i] > max)
+			max = myArray[i];
+	}
+
+	return max;
+}
+
+int getSum(int myArray[])
+{
+	int sum;
+	sum = 0;
+	for (int i = 0; i < sizeArr; i++)
+		sum += myArray[i];
+	
+	return sum;
+
+}
+
+===================================================================
+===================================================================
+Selection Sort
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int sizeA = 30;
+
+void fillArray(int[]);
+void output(int[]);
+void selectionSort(int[]);
+int getIndex(int[], int);
+void swap(int[], int, int);
+
+int main()
+{
+	int numbers[sizeA];
+
+	//fill array with random #s from 1 to 100
+	fillArray(numbers);
+
+	//display array before sorting it
+	output(numbers);
+
+	//sort array
+	selectionSort(numbers);
+
+	//display array after sorting it
+	output(numbers);
+
+	system("pause");
+	return 0;
+}
+
+void fillArray(int a[]) {
+	srand(time(0));
+	for (int i = 0; i < sizeA; i++)
+		a[i] = rand() % 100 + 1;
+}
+
+void output(int a[]) {
+
+	//displays the array 10 numbers per row
+	for (int i = 0; i < sizeA; i++)
+	{
+		cout << a[i] << "\t";
+
+		if ((i + 1) % 10 == 0)
+			cout << endl;
+	}
+
+	cout << endl<<endl;
+}
+
+void selectionSort(int a[]) {
+	for (int i = 0; i < sizeA; i++)
+	{
+		int j = getIndex(a, i);
+		swap(a, i, j);
+	}
+}
+
+int getIndex(int a[], int i)
+{
+	int min = a[i];
+	int index = i;
+
+	//find the lowest number
+	for (int j = i+1; j < sizeA; j++)
+	{
+		if (a[j] < min)
+		{
+			min = a[j];
+			index = j;
+		}
+	}
+	return index;
+}
+
+void swap(int a[], int i, int j) {
+	int temp = a[i];
+	a[i] = a[j];
+	a[j] = temp;
+}
+
+
+===================================================================
+===================================================================
+p.237 5th edition
+p.242 6th edition
+
+
+#include <iostream>
+#include <cmath>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int sizeA = 10;
+
+void fillArray(int[]);
+void output(int[]);
+void input(int&);
+int getPIN(int[],int);
+
+int main()
+{
+	int PIN = 12345, rPIN, uPIN;
+	int numbers[sizeA];
+
+	//fill array with random #s from 1 to 3
+	fillArray(numbers);
+
+	//display array
+	output(numbers);
+
+	//get user input
+	input(uPIN);
+
+	//get value based on the PIN value
+	rPIN = getPIN(numbers,PIN);
+
+	//Grant Access if the returned PIN is same as user input
+	if (rPIN == uPIN)
+		cout << "Access Granted!" << endl;
+	else
+		cout << "Try Again!" << endl;
+
+	system("pause");
+	return 0;
+}
+
+int getPIN(int a[],int p)
+{
+	int digit, sum=0,i=0;
+
+	
+	do {
+		//PIN is divided into digits	
+		digit = p % 10;
+		p /= 10;
+
+		//use the digit as the index of the array
+		//to retrive the information
+		sum += a[digit]*pow(10, i);
+		i++;
+	} while (p!=0);
+
+	return sum;
+}
+
+void input(int& p)
+{
+	cout << "Enter your PIN number: ";
+	cin >> p;
+}
+
+void fillArray(int a[]) {
+	srand(time(0));
+	for (int i = 0; i < sizeA; i++)
+		a[i] = rand() % 3 + 1;
+}
+
+void output(int a[])
+{
+	for (int i = 0; i < sizeA; i++)
+		cout << i << "\t";
+
+	cout << endl;
+
+	for (int i = 0; i < sizeA; i++)
+		cout << a[i] << "\t";
+
+	cout << endl;
+}
