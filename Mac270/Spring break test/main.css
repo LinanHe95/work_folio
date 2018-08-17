@@ -1,0 +1,36 @@
+/* Thirds */
+div.thirds {
+padding-bottom: 50px;
+}
+div.one-third {
+width: 30%;
+float: left;
+margin-right: 5%;
+}
+div.one-third-last {
+margin: 0;
+}
+/* Main Column */
+div.main {
+width: 65%;
+float: left;
+margin-right: 5%;
+}
+/* Side Column */
+div.side {
+width: 30%;
+float: left;
+}
+/* Info Box */
+div.info-box-a {
+background-color: #9bdaef;
+padding: 20px;
+font-size: 13px;
+margin: 0 0 15px 0;
+}
+div.info-box-b {
+background-color: #efdb7f;
+padding: 20px;
+font-size: 13px;
+margin: 0 0 15px 0;
+}

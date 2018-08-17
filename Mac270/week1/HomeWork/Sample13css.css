@@ -1,0 +1,11 @@
+
+body{
+    div {
+    border-width:5px;  
+    border-style:double;
+    }
+}
+p{
+    font-size: 15px
+    font-family:Times New Roman
+}

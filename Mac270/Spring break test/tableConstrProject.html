@@ -1,0 +1,245 @@
+<html>
+<head>
+    <title>
+    LaGurdia Community College Contrusction Project</title></head>
+<body>
+    <div action="insert.php" method="post">
+    <div class="Top">
+        <selection align="left" >
+        <h2>LaGurdia Community College Contrusction Project</h2>
+        Project ID#: <input type="search" name="pro_id">
+        Project Name: <input type="search" name="pro_name">
+        </selection>
+    </div>
+        <!--end of search -->
+    <div class="table1" >
+    <form >
+     project name: <input type="text" name="pro_name">
+         priority level:
+        <select name="pri_lvl">
+            <option>high</option>
+            <option>median</option>
+            <option>low</option>
+        </select><br>
+        project#:<input type="text" name="pro_num">
+        Building: 
+        <select name="building" id="building">
+            <option>M</option>
+            <option>E</option>
+            <option>B</option>
+            <option>C</option>
+        </select><br>
+        project type:<input type="text"name="pro_type" id="pro_type">
+        location:<input type="text" name="location" id="location"><br>
+        project start date:<input type="date" name="pro_date" id="pro_date">
+        service provided:
+        <select name="ser_provider" id="ser_provider">
+            <option>provder one</option>
+            <option>provder two</option>
+            <option>provder three</option>
+            <option>provder four</option>
+        </select><br>
+        completed Date:<input type="date" name="com_date" id="com_date">
+        status:
+        <select name="status" id="status">
+            <option>good</option>
+            <option>ok</option>
+            <option>not bad</option>
+            <option>trash</option>
+        </select><br>
+        Desgin team:<input type="text" name="des_team" id="des_team">
+        </form>
+    </div>
+    
+    <section name="table2">
+        Cost:<br>
+        Design Cost:<input type="number" name="des_cost" id="des_cost"><br>
+        Construction Cost:<input type="number" name="con_cost" id="con_cost"><br>
+        FE cost: <input type="number" name="fe_cost" id="fe_cost"><br>
+        Total cost:<p id="totalcost"></p><br>
+    </section>
+    
+    <script>
+        
+        document.getElementById("totalcost").innerHTML=des_cost+con_cost+fe_cost;
+    </script>
+    <!--end of cost table-->
+    
+    Project Overview:<br>
+    <textarea cols="40" rows="5"></textarea>
+    
+   <section>
+        <table border="1">
+        <tr>
+            <th></th>
+            <th>Amount</th>
+            <th>Fy Recieved</th>
+            <th>Contact info</th>
+        </tr>
+        <tr>
+            <td>boro presdient</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="text" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>city counil</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="text" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>mayor</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="text" name="" id=""></th>
+       </tr>
+       <tr>
+            <td>in house</td>
+           <th><input type="number" name="" id=""></th>
+           <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>Captial Project:</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>Cuny 2020</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>sam CCAP</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr> 
+            <td>private grant</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>Federial state</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>DCAS/Operating:<td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>DCAS/CAP</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        <tr>
+            <td>Engery Conservation:</td>
+            <th><input type="number" name="" id=""></th>
+            <th><input type="number" name="" id=""></th>
+        </tr>
+        </table>
+    </section>
+<!---end of funding table-->
+
+<div class="tab">
+  <button class="tablinks" onclick="switch(event, 'meeting')">Meeting Minutes</button>
+  <button class="tablinks" onclick="switch(event, 'request_desgin')">Request and DesginBasis</button>
+  <button class="tablinks" onclick="switch(event, 'request_change')">Request for Scope Change</button>
+    <button class="tablinks" onclick="switch(event, 'cost_est')">Cost Estimates</button>
+    <button class="tablinks" onclick="switch(event, 'build_dep')">Building Departments</button>
+    <button class="tablinks" onclick="switch(event, 'bid_doc')">Bid Documents</button>
+    <button class="tablinks" onclick="switch(event, 'insp_report')">Inspection Reports</button>
+    <button class="tablinks" onclick="switch(event, 'f_e')">F and E</button>
+    <button class="tablinks" onclick="switch(event, 'closeout')">Closeout</button>
+</div>
+
+<div id="meeting" class="tabcontent">
+  <form action="up.php" method="post" enctype="multipart/form-data">
+      Description of File: <input type="text" name="description_entered" /><br>
+      <input type="file" name="file" accept=".pdf"><br>
+      <input type="submit" name="submit" value="Upload" />
+  </form>
+</div>
+
+<div id="request_desgin" class="tabcontent">
+ <form action="up.php" method="post" enctype="multipart/form-data">
+     Description of File: <input type="text" name="description_entered" /><br>
+     <input type="file" name="file" accept=".pdf"><br>
+     <input type="submit" name="submit" value="Upload" />
+    </form>
+</div>
+
+<div id="request_change" class="tabcontent">
+ <form action="up.php" method="post" enctype="multipart/form-data">
+     Description of File: <input type="text" name="description_entered" /><br>
+     <input type="file" name="file" accept=".pdf"><br>
+     <input type="submit" name="submit" value="Upload" />
+    </form>
+</div>
+<div id="cost_est" class="tabcontent">
+  <form action="up.php" method="post" enctype="multipart/form-data">
+      Description of File: <input type="text" name="description_entered" /><br>
+      <input type="file" name="file" accept=".pdf"><br>
+      <input type="submit" name="submit" value="Upload" />
+</form>
+</div>
+    <div id="build_dep" class="tabcontent">
+  <form action="up.php" method="post" enctype="multipart/form-data">
+      Description of File: <input type="text" name="description_entered" /><br>
+      <input type="file" name="file" accept=".pdf"><br>
+      <input type="submit" name="submit" value="Upload" />
+</form>
+</div>
+    <div id="bid_doc" class="tabcontent">
+  <form action="up.php" method="post" enctype="multipart/form-data">
+      Description of File: <input type="text" name="description_entered" /><br>
+      <input type="file" name="file" accept=".pdf"><br>
+      <input type="submit" name="submit" value="Upload" />
+</form>
+</div>
+    <div id="insp_report" class="tabcontent">
+<form action="up.php" method="post" enctype="multipart/form-data">
+    Description of File: <input type="text" name="description_entered" /><br>
+    <input type="file" name="file" accept=".pdf"><br>
+    <input type="submit" name="submit" value="Upload" />
+</form>
+</div>
+    <div id="f_e" class="tabcontent">
+ <form action="up.php" method="post" enctype="multipart/form-data">
+     Description of File: <input type="text" name="description_entered" /><br>
+     <input type="file" name="file"accept=".pdf"><br>
+     <input type="submit" name="submit" value="Upload" />
+</form>
+</div>
+    <div id="closeout" class="tabcontent">
+<form action="up.php" method="post" enctype="multipart/form-data">
+    Description of File: <input type="text" name="description_entered" /><br>
+    <input type="file" name="file" accept=".pdf"><br>
+    <input type="submit" name="submit" value="Upload" />
+</form>
+</div>
+<script>
+function switch(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+    <!--end of tabes files-->
+    <input type="reset" value="Close">
+    <input type="submit" value="Save">
+    <input type="submit" value="Five Year Captial Budget Request">
+    </div>
+    </body>
+
+</html>
